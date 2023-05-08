@@ -8,6 +8,9 @@ public class ObjectMovement : MonoBehaviour
     [SerializeField] Vector2 speedMinMax;
     private float speed;
     [SerializeField] bool isHealth;
+    [SerializeField] bool isShield;
+
+    [HideInInspector] public GameObject objectToShow;
 
     [SerializeField] int hitValue;
     [SerializeField] bool doesDamage;
@@ -15,6 +18,7 @@ public class ObjectMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        objectToShow = GameObject.Find("Player/shieldOnPlayer");
     }
 
     private void Start()
@@ -64,6 +68,11 @@ public class ObjectMovement : MonoBehaviour
         if (doesDamage)
         {
             health.TakeDamage(hitValue);
+        }
+        else if (isShield)
+        {
+            objectToShow.GetComponent<SpriteRenderer>().enabled = true;
+            health.shieldActive = true;
         }
         else
         {

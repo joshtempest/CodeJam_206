@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _health, _maxHealth = 1;
+    GameObject childToHide;
     [SerializeField] Image healthbar;
+    public bool shieldActive = false;
 
     private void Awake()
     {
         ResetHealth();
+        childToHide = GameObject.Find("Player/shieldOnPlayer");
     }
 
     /// <summary>
@@ -20,6 +24,12 @@ public class Health : MonoBehaviour
     /// <returns></returns>
     public void TakeDamage()
     {
+        if (shieldActive)
+        {
+            childToHide.SetActive(false);
+            shieldActive = false;
+            return;
+        }
         _health--;
         UpdateUI();
         SoundManager.instance.PlaySound(Sounds.TakeDamage);
@@ -33,6 +43,12 @@ public class Health : MonoBehaviour
     /// <returns></returns>
     public void TakeDamage(int damage)
     {
+        if (shieldActive)
+        {
+            childToHide.SetActive(false);
+            shieldActive = false;
+            return;
+        }
         _health -= damage;
         UpdateUI();
         SoundManager.instance.PlaySound(Sounds.TakeDamage);

@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject healthPickup;
+    [SerializeField] private GameObject shieldPickup;
     [SerializeField] private float spawnRate = 1;
     [SerializeField] private float spawnHeight;
     [SerializeField] float leftSideOfScreen;
@@ -68,6 +69,10 @@ public class SpawnManager : MonoBehaviour
         if (numSpawn >= 95)
         {
             Instantiate(healthPickup, Spawnpos(), Quaternion.identity);
+        }
+        else if (numSpawn is >=93 and <=94)
+        {
+            Instantiate(shieldPickup, Spawnpos(), Quaternion.identity);
         }
         //any other number and it spawns a meteor
         else
