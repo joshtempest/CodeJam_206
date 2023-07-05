@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
         {
             Instantiate(healthPickup, Spawnpos(), Quaternion.identity);
         }
-        else if (numSpawn is >=93 and <=94)
+        else if (numSpawn is ==93 or ==94)
         {
             Instantiate(shieldPickup, Spawnpos(), Quaternion.identity);
         }
