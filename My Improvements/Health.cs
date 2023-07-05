@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
     {
         if (shieldActive)
         {
-            childToHide.SetActive(false);
+            childToHide.GetComponent<SpriteRenderer>().enabled = false;
             shieldActive = false;
             return;
         }
