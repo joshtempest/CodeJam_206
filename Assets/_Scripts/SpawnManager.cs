@@ -70,6 +70,7 @@ public class SpawnManager : MonoBehaviour
         {
             Instantiate(healthPickup, Spawnpos(), Quaternion.identity);
         }
+        //if the random number is either 93 or 94 spawn a shield pickup
         else if (numSpawn == 93 || numSpawn == 94)
         {
             Instantiate(shieldPickup, Spawnpos(), Quaternion.identity);
